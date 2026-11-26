@@ -4,7 +4,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BOOTSTRAP = Path(__file__).with_name("bootstrap.ps1")
-OUTPUT = ROOT / "Кадр — встановити і запустити.bat"
+OUTPUT = ROOT / "Kadr-Install.bat"
 
 
 def main() -> None:
