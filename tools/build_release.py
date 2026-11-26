@@ -16,7 +16,11 @@ def main() -> None:
             if not directory.is_dir():
                 raise RuntimeError(f"Missing build output: {directory}")
             for path in sorted(directory.rglob("*")):
-                if path.is_file() and "__pycache__" not in path.parts and path.suffix not in {".pyc", ".pyo"}:
+                if (
+                    path.is_file()
+                    and "__pycache__" not in path.parts
+                    and path.suffix not in {".pyc", ".pyo"}
+                ):
                     archive.write(path, path.relative_to(ROOT).as_posix())
         for name in ("requirements-runtime.txt", "README.md"):
             archive.write(ROOT / name, name)

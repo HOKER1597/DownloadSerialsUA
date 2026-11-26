@@ -7,7 +7,7 @@ import webbrowser
 
 import uvicorn
 
-from app.main import create_app
+from app.system.ffmpeg import configure_ffmpeg_path
 
 
 def free_port() -> int:
@@ -17,6 +17,9 @@ def free_port() -> int:
 
 
 def main() -> None:
+    configure_ffmpeg_path()
+    from app.main import create_app
+
     token = secrets.token_urlsafe(32)
     port = free_port()
     url = f"http://127.0.0.1:{port}/?token={token}"

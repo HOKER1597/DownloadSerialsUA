@@ -19,7 +19,9 @@ def test_uaflix_film_page_creates_single_film():
 
 def test_uakino_film_player_creates_single_film():
     title, season = uakino.title_and_season("Марті")
-    episode = uakino.episode_from_item({"url": "https://ashdi.vip/vod/298569", "number": "1", "voice": "Українська"}, season)
+    episode = uakino.episode_from_item(
+        {"url": "https://ashdi.vip/vod/298569", "number": "1", "voice": "Українська"}, season
+    )
     assert title == "Марті"
     assert episode.source_url == "https://ashdi.vip/vod/298569"
     assert episode.season is None

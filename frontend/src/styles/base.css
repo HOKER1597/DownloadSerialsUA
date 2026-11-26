@@ -1,0 +1,233 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  min-width: 320px;
+}
+button,
+input {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.app-shell {
+  min-height: 100vh;
+  background: radial-gradient(circle at 63% 0, #193c48 0, #0d202b 31%, #0d202b 100%);
+}
+.topbar {
+  height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #284654;
+  padding: 0 clamp(24px, 5vw, 88px);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: -0.065em;
+}
+.brand-mark {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  background: var(--accent);
+  color: #142a35;
+  display: grid;
+  place-items: center;
+  transform: rotate(-5deg);
+}
+.topbar-note {
+  font-size: 13px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.connection-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #95c9b1;
+  box-shadow: 0 0 0 4px #95c9b11c;
+}
+.layout {
+  max-width: 1530px;
+  margin: 0 auto;
+  padding: 62px clamp(24px, 5vw, 88px) 80px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 350px;
+  gap: 58px;
+}
+.main-column {
+  min-width: 0;
+}
+.intro {
+  margin-bottom: 42px;
+}
+.intro-kicker {
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 600;
+  margin: 0 0 17px;
+}
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+h1,
+h2,
+h3 {
+  font-family: 'Space Grotesk', sans-serif;
+}
+h1 {
+  font-size: clamp(43px, 5.2vw, 77px);
+  line-height: 1.03;
+  letter-spacing: -0.066em;
+  font-weight: 500;
+  margin-bottom: 23px;
+}
+.intro-copy {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 555px;
+  line-height: 1.55;
+  margin-bottom: 0;
+}
+.search-form {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 23px;
+  margin-bottom: 30px;
+}
+.search-form > label,
+.field-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #c9d9dc;
+  margin: 0 0 10px;
+}
+.search-line {
+  display: flex;
+  gap: 10px;
+}
+.url-field {
+  height: 54px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--muted);
+  background: #0f2633;
+  border: 1px solid #3a5965;
+  border-radius: 10px;
+  flex: 1;
+  min-width: 0;
+  padding: 0 15px;
+}
+.url-field input {
+  min-width: 0;
+  flex: 1;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  outline: 0;
+  text-overflow: ellipsis;
+}
+.url-field input::placeholder {
+  color: #708f9c;
+}
+.primary-button {
+  border: 0;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #172935;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 23px;
+  min-height: 54px;
+  white-space: nowrap;
+  transition: background 0.15s ease;
+}
+.primary-button:hover:not(:disabled) {
+  background: #f1c687;
+}
+.source-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.source-tags span {
+  font-size: 11px;
+  color: #a4bbc3;
+  border: 1px solid #3d5c66;
+  border-radius: 5px;
+  padding: 5px 8px;
+}
+.notice,
+.scan-state {
+  padding: 16px 18px;
+  border-radius: 11px;
+  background: #214052;
+  border: 1px solid #527487;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  font-size: 14px;
+  margin: 0 0 25px;
+  line-height: 1.4;
+}
+.notice.error {
+  background: #4b2d33;
+  border-color: #915762;
+  color: #ffd9d5;
+}
+.scan-state {
+  background: var(--surface);
+  border-color: var(--line);
+  color: var(--accent);
+}
+.scan-state div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.scan-state span {
+  color: var(--muted);
+}
+.site-footer {
+  padding: 30px clamp(24px, 5vw, 88px);
+  border-top: 1px solid #284653;
+  color: #79949d;
+  font-size: 12px;
+}
+.spin {
+  animation: spin 1.2s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

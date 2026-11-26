@@ -1,0 +1,17 @@
+:root {
+  font-family: 'DM Sans', sans-serif;
+  color: #eaf2f3;
+  background: #0d202b;
+  font-synthesis: none;
+  font-weight: 400;
+  --bg: #0d202b;
+  --surface: #142d3b;
+  --surface-2: #1c3948;
+  --line: #31505e;
+  --text: #eaf2f3;
+  --muted: #9bb2bc;
+  --accent: #d9ae70;
+  --accent-deep: #b98444;
+  --cyan: #8dc6ca;
+  --danger: #ed9484;
+}
