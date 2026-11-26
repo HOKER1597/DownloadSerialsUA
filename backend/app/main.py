@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 import secrets
 import shutil
+from contextlib import asynccontextmanager
 from pathlib import Path
 
 from fastapi import FastAPI
@@ -16,7 +17,15 @@ from app.storage.sqlite import Store
 
 
 def create_app(data_dir: Path | None = None, token: str | None = None) -> FastAPI:
-    app = FastAPI(title="Кадр — завантаження серіалів")
+    @asynccontextmanager
+    async def lifespan(app: FastAPI):
+        try:
+            yield
+        finally:
+            await app.state.manager.shutdown()
+            app.state.store.close()
+
+    app = FastAPI(title="Кадр — завантаження серіалів", lifespan=lifespan)
     app.state.token = token or secrets.token_urlsafe(32)
     default_data = Path(
         os.environ.get(
@@ -26,12 +35,6 @@ def create_app(data_dir: Path | None = None, token: str | None = None) -> FastAP
     app.state.store = Store((data_dir or default_data) / "state.sqlite3")
     app.state.events = EventHub()
     app.state.manager = JobManager(app.state.store, app.state.events.publish)
-
-    async def shutdown() -> None:
-        await app.state.manager.shutdown()
-        app.state.store.close()
-
-    app.add_event_handler("shutdown", shutdown)
 
     @app.get("/api/health")
     async def health():
