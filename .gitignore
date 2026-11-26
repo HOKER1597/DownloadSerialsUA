@@ -5,9 +5,16 @@ backend/__pycache__/
 backend/app/__pycache__/
 backend/app/sources/__pycache__/
 backend/app/jobs/__pycache__/
+**/__pycache__/
 .pytest_cache/
+.coverage
+coverage/
+.superpowers/
 __pycache__/
 build/
 dist/
 kadr-app.zip
 kadr-app.zip.sha256
+/*.bat
+/ChangesAntigravity.txt
+/docs/superpowers/
